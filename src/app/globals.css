@@ -1,26 +1,87 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── Marca ─────────────────────────────────────────────────────────────
+   Troque apenas os 3 valores abaixo para reskinar a landing inteira.   */
+:root {
+  --brand: oklch(0.66 0.19 42);        /* laranja Koty (placeholder)   */
+  --brand-strong: oklch(0.57 0.18 40); /* hover / gradiente escuro     */
+  --brand-glow: oklch(0.73 0.16 52);   /* brilho radial do hero        */
+  --brand-deep: oklch(0.36 0.13 35);   /* vinheta das bordas do hero   */
+  --brand-soft: oklch(0.96 0.03 60);   /* fundos suaves de seção       */
+  --cream: oklch(0.985 0.012 80);      /* fundo claríssimo de seção    */
+  --peach: oklch(0.94 0.035 70);       /* faixa quente de seção        */
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0.875rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.22 0.01 60);
+  --muted: oklch(0.97 0.005 60);
+  --muted-foreground: oklch(0.53 0.015 60);
+  --border: oklch(0.92 0.006 60);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+
+  --primary: var(--brand);
+  --primary-foreground: oklch(1 0 0);
+}
+
+.dark {
+  --background: oklch(0.17 0.01 55);
+  --foreground: oklch(0.97 0.005 60);
+  --muted: oklch(0.24 0.012 55);
+  --muted-foreground: oklch(0.7 0.015 60);
+  --border: oklch(0.3 0.012 55);
+  --card: oklch(0.21 0.012 55);
+  --card-foreground: var(--foreground);
+  --brand-soft: oklch(0.26 0.03 50);
+  --cream: oklch(0.2 0.012 55);
+  --peach: oklch(0.24 0.02 55);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-glow: var(--brand-glow);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-soft: var(--brand-soft);
+  --color-cream: var(--cream);
+  --color-peach: var(--peach);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --font-sans: var(--font-sans-var);
+
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.5rem);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--border);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans-var), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-sans-var), sans-serif;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
 }
