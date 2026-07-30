@@ -1,57 +1,52 @@
 "use client";
 
 import { useRef } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import { motion } from "motion/react";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 type Post = {
   title: string;
-  category: string;
+  date: string;
   excerpt: string;
   href: string;
-  /** classes do fundo da "capa" enquanto não há imagens reais */
-  cover: string;
-  dark?: boolean;
 };
 
 const POSTS: Post[] = [
   {
-    title: "Automação",
-    category: "Automação",
-    excerpt: "Como automatizar o check-in e parar de enviar a mesma mensagem a cada reserva.",
+    title: "Como automatizar o check-in e as mensagens do seu Airbnb",
+    date: "12 JUL 2026",
+    excerpt:
+      "Um passo a passo para parar de enviar a mesma mensagem a cada reserva e receber hóspedes no automático.",
     href: "/blog",
-    cover: "bg-muted",
   },
   {
-    title: "Operação",
-    category: "Operação",
-    excerpt: "Checklist de limpeza: o padrão que os super anfitriões seguem entre estadias.",
+    title: "Checklist de limpeza: o padrão dos super anfitriões",
+    date: "05 JUL 2026",
+    excerpt:
+      "O roteiro cômodo por cômodo que as melhores operações seguem entre uma estadia e outra.",
     href: "/blog",
-    cover: "bg-muted",
   },
   {
-    title: "Receita",
-    category: "Receita",
-    excerpt: "Como precificar suas diárias na alta temporada sem perder ocupação.",
+    title: "Como precificar suas diárias na alta temporada",
+    date: "28 JUN 2026",
+    excerpt:
+      "Estratégias de preço para aumentar a receita sem derrubar a ocupação do seu imóvel.",
     href: "/blog",
-    cover: "bg-muted",
   },
   {
-    title: "Hospitalidade",
-    category: "Hospitalidade",
-    excerpt: "Guia da Casa: menos perguntas no WhatsApp, mais avaliações 5 estrelas.",
+    title: "Guia da Casa: menos perguntas, mais avaliações 5 estrelas",
+    date: "20 JUN 2026",
+    excerpt:
+      "Como um guia digital reduz as dúvidas dos hóspedes e melhora a nota do seu anúncio.",
     href: "/blog",
-    cover: "bg-muted",
   },
   {
-    title: "Comunicação",
-    category: "Comunicação",
-    excerpt: "Mensagens de WhatsApp que economizam horas do anfitrião toda semana.",
+    title: "Mensagens de WhatsApp que economizam horas toda semana",
+    date: "14 JUN 2026",
+    excerpt:
+      "Os modelos de mensagem que os anfitriões mais usam para ganhar tempo na operação.",
     href: "/blog",
-    cover: "bg-muted",
   },
 ];
 
@@ -81,15 +76,21 @@ export function BlogSection() {
           className="grid gap-8 lg:grid-cols-12 lg:items-start"
         >
           <div className="lg:col-span-6">
-            <h2 className="max-w-md text-3xl font-extrabold leading-[1.15] sm:text-4xl">
-              Conteúdo para você hospedar cada vez melhor
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
+              Blog
+            </p>
+            <h2 className="mt-5 max-w-2xl text-4xl font-extrabold leading-[1.08] sm:text-5xl">
+              Conteúdo para você
+              <br />
+              hospedar cada vez melhor
             </h2>
-            <Button size="md" className="mt-6" asChild>
-              <a href="/blog">
-                Visitar o blog
-                <ArrowRight className="size-4" />
-              </a>
-            </Button>
+            <a
+              href="/blog"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
+            >
+              Visitar o blog
+              <ArrowRight className="size-4" />
+            </a>
           </div>
           <p className="text-base leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">
             Dicas práticas de automação, limpeza, precificação e hospitalidade —
@@ -115,45 +116,36 @@ export function BlogSection() {
             <ArrowRight className="size-4" />
           </button>
         </div>
-
-        <motion.div
-          {...reveal}
-          ref={trackRef}
-          className="mt-6 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {POSTS.map((post) => (
-            <article
-              key={post.excerpt}
-              className="w-[75vw] max-w-xs shrink-0 snap-start sm:w-80"
-            >
-              <a href={post.href} className="group block">
-                <div
-                  className={cn(
-                    "relative aspect-[3/4] overflow-hidden rounded-xl",
-                    post.cover,
-                  )}
-                >
-                  <span
-                    className={cn(
-                      "absolute bottom-5 left-5 text-lg font-bold",
-                      post.dark ? "text-white" : "text-foreground",
-                    )}
-                  >
-                    {post.category}
-                  </span>
-                </div>
-                <p className="mt-4 text-[15px] leading-relaxed text-foreground">
-                  {post.excerpt}
-                </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand group-hover:underline">
-                  Ler artigo
-                  <ArrowRight className="size-3.5" />
-                </span>
-              </a>
-            </article>
-          ))}
-        </motion.div>
       </div>
+
+      {/* trilho full-bleed: os cards correm até as bordas da página */}
+      <motion.div
+        {...reveal}
+        ref={trackRef}
+        className="mt-8 flex w-full snap-x snap-mandatory gap-6 overflow-x-auto px-[max(1.25rem,calc((100%_-_80rem)_/_2_+_1.25rem))] pb-2 [scroll-padding-inline:max(1.25rem,calc((100%_-_80rem)_/_2_+_1.25rem))] lg:px-[max(2rem,calc((100%_-_80rem)_/_2_+_2rem))] lg:[scroll-padding-inline:max(2rem,calc((100%_-_80rem)_/_2_+_2rem))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {POSTS.map((post) => (
+          <article
+            key={post.title}
+            className="w-[80vw] max-w-sm shrink-0 snap-start rounded-2xl border border-border bg-card transition-colors hover:border-foreground/20 sm:w-96"
+          >
+            <a href={post.href} className="group block p-6 sm:p-7">
+              <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                <FileText className="size-4" strokeWidth={1.75} />
+                Artigo
+              </span>
+
+              <h3 className="mt-5 text-xl font-bold leading-snug tracking-tight group-hover:text-brand sm:text-2xl">
+                {post.title}
+              </h3>
+
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {post.excerpt}
+              </p>
+            </a>
+          </article>
+        ))}
+      </motion.div>
     </section>
   );
 }

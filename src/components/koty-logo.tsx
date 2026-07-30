@@ -7,13 +7,16 @@ import { cn } from "@/lib/utils";
  *
  * `onBrand` renderiza a versão em branco sólido, para uso sobre o laranja da
  * marca — o gradiente original não tem contraste suficiente nesse fundo.
+ * `black` renderiza a versão em preto sólido.
  */
 export function KotyLogo({
   className,
   onBrand = false,
+  black = false,
 }: {
   className?: string;
   onBrand?: boolean;
+  black?: boolean;
 }) {
   return (
     <Image
@@ -25,6 +28,7 @@ export function KotyLogo({
       className={cn(
         "h-7 w-auto",
         onBrand && "brightness-0 invert",
+        black && "brightness-0",
         className,
       )}
     />

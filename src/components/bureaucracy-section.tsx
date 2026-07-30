@@ -6,10 +6,8 @@ import {
   BookOpen,
   Bot,
   CalendarDays,
-  Check,
   ListChecks,
   MessageCircle,
-  Sparkles,
   Wallet,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -69,8 +67,7 @@ export function BureaucracySection() {
           className="grid gap-8 lg:grid-cols-12 lg:items-start"
         >
           <div className="lg:col-span-8">
-            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-brand">
-              <Sparkles className="size-4" />
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
               Cadastre seu imóvel
             </p>
             <h2 className="mt-5 text-4xl font-extrabold leading-[1.08] sm:text-5xl">
@@ -113,16 +110,6 @@ export function BureaucracySection() {
               >
                 <div className="mx-auto grid max-w-7xl gap-4 px-5 lg:grid-cols-12 lg:items-center lg:gap-6 lg:px-8">
                   <div className="flex items-center gap-3.5 lg:col-span-4">
-                    <span
-                      className={cn(
-                        "grid size-6 shrink-0 place-items-center rounded-full border transition-colors",
-                        isActive
-                          ? "border-brand bg-brand text-white"
-                          : "border-border text-muted-foreground",
-                      )}
-                    >
-                      <Check className="size-3.5" strokeWidth={3} />
-                    </span>
                     <span className="text-sm font-bold">{row.title}</span>
                   </div>
 

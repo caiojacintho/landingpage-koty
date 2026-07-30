@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
 import { KotyLogo } from "@/components/koty-logo";
+
+const SOCIALS = [
+  { label: "Instagram", href: "https://instagram.com", icon: FaInstagram },
+  { label: "Facebook", href: "https://facebook.com", icon: FaFacebookF },
+  { label: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedinIn },
+];
 
 const COLUMNS = [
   {
@@ -34,7 +41,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <KotyLogo className="h-7 w-auto" />
+            <KotyLogo className="h-7 w-auto" black />
           </div>
 
           {COLUMNS.map((col) => (
@@ -54,6 +61,21 @@ export function SiteFooter() {
               </ul>
             </div>
           ))}
+
+          <div className="flex items-start gap-3 lg:col-span-2 lg:justify-end">
+            {SOCIALS.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <Icon className="size-4" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 border-t border-border pt-6 text-xs text-muted-foreground">

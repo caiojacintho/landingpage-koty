@@ -58,7 +58,7 @@ export function RevenueSimulator() {
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
             Simulador de receita
           </p>
-          <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-[3.4rem]">
+          <h2 className="mt-5 text-4xl font-extrabold leading-[1.08] sm:text-5xl">
             Descubra quanto seu imóvel pode render
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
