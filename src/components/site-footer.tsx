@@ -4,9 +4,9 @@ import { KotyLogo } from "@/components/koty-logo";
 
 const COLUMNS = [
   {
-    title: "Gestão",
+    title: "Recursos",
     links: [
-      { label: "Gestão", href: "/" },
+      { label: "Plataforma", href: "/plataforma" },
       { label: "Guia da Casa", href: "/guia-da-casa" },
     ],
   },
@@ -15,15 +15,14 @@ const COLUMNS = [
     links: [
       { label: "Proprietário", href: "/proprietario" },
       { label: "Gestora", href: "/gestora" },
-      { label: "Planos", href: "/planos" },
+      { label: "Preço", href: "/planos" },
     ],
   },
   {
     title: "Koty",
     links: [
-      { label: "Sobre nós", href: "/sobre" },
+      { label: "Quem somos", href: "/quem-somos" },
       { label: "Blog", href: "/blog" },
-      { label: "Carreiras", href: "/carreiras" },
       { label: "Contato", href: "/contato" },
     ],
   },
@@ -36,10 +35,6 @@ export function SiteFooter() {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <KotyLogo className="h-7 w-auto" />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Gestão completa de aluguel por temporada. Mais ocupação, mais
-              receita e menos trabalho para o anfitrião.
-            </p>
           </div>
 
           {COLUMNS.map((col) => (

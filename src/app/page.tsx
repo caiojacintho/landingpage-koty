@@ -1,6 +1,5 @@
 import { BureaucracySection } from "@/components/bureaucracy-section";
 import { Hero } from "@/components/hero";
-import { PlansShowcase } from "@/components/plans-showcase";
 import { RevenueSimulator } from "@/components/revenue-simulator";
 import { SimplifySection } from "@/components/simplify-section";
 import { SiteFooter } from "@/components/site-footer";
@@ -16,7 +15,6 @@ export default function Home() {
         <SimplifySection />
         <SolutionsSection />
         <RevenueSimulator />
-        <PlansShowcase />
         <BureaucracySection />
       </main>
       <SiteFooter />

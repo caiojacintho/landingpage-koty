@@ -133,7 +133,7 @@ export function SolutionsSection() {
                     "flex flex-col justify-center pt-14 lg:col-span-4 lg:min-h-[85vh] lg:pt-0",
                     first
                       ? "lg:col-start-1 lg:row-start-1"
-                      : "lg:col-start-9 lg:row-start-2 lg:border-t lg:border-foreground/10",
+                      : "lg:col-start-1 lg:row-start-2 lg:border-t lg:border-foreground/10",
                   )}
                 >
                   <span className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-strong text-white shadow-md shadow-brand/25">
@@ -161,7 +161,7 @@ export function SolutionsSection() {
                     "flex flex-col justify-center gap-10 pt-12 pb-16 lg:col-span-4 lg:min-h-[85vh] lg:py-0",
                     first
                       ? "lg:col-start-9 lg:row-start-1"
-                      : "lg:col-start-1 lg:row-start-2 lg:border-t lg:border-foreground/10",
+                      : "lg:col-start-9 lg:row-start-2 lg:border-t lg:border-foreground/10",
                   )}
                 >
                   {block.bullets.map(({ icon: BulletIcon, text }) => (

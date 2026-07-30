@@ -81,14 +81,15 @@ export function BureaucracySection() {
           </div>
           <div className="lg:col-span-4 lg:pt-2">
             <p className="text-sm font-bold uppercase leading-relaxed tracking-[0.1em]">
-              Entre para a gestão de temporada mais completa do Brasil
+              Entre para a gestão de temporada mais moderna do Brasil
             </p>
             <span className="mt-4 block h-px w-8 bg-brand" />
           </div>
         </motion.div>
+      </div>
 
-        <ul className="mt-14 divide-y divide-border border-y border-border">
-          {ROWS.map((row, i) => {
+      <ul className="mt-14 divide-y divide-border border-y border-border">
+        {ROWS.map((row, i) => {
             const Icon = row.icon;
             const isActive = i === active;
             return (
@@ -106,39 +107,40 @@ export function BureaucracySection() {
                 onFocus={() => setActive(i)}
                 tabIndex={0}
                 className={cn(
-                  "grid cursor-default gap-4 px-2 py-7 outline-none transition-colors lg:grid-cols-12 lg:items-center lg:gap-6",
+                  "cursor-default py-7 outline-none transition-colors",
                   isActive && "bg-muted/60",
                 )}
               >
-                <div className="flex items-center gap-3.5 lg:col-span-4">
-                  <span
-                    className={cn(
-                      "grid size-6 shrink-0 place-items-center rounded-full border transition-colors",
-                      isActive
-                        ? "border-brand bg-brand text-white"
-                        : "border-border text-muted-foreground",
-                    )}
-                  >
-                    <Check className="size-3.5" strokeWidth={3} />
-                  </span>
-                  <span className="text-sm font-bold">{row.title}</span>
-                </div>
+                <div className="mx-auto grid max-w-7xl gap-4 px-5 lg:grid-cols-12 lg:items-center lg:gap-6 lg:px-8">
+                  <div className="flex items-center gap-3.5 lg:col-span-4">
+                    <span
+                      className={cn(
+                        "grid size-6 shrink-0 place-items-center rounded-full border transition-colors",
+                        isActive
+                          ? "border-brand bg-brand text-white"
+                          : "border-border text-muted-foreground",
+                      )}
+                    >
+                      <Check className="size-3.5" strokeWidth={3} />
+                    </span>
+                    <span className="text-sm font-bold">{row.title}</span>
+                  </div>
 
-                <p className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground lg:col-span-8">
-                  <Icon
-                    className={cn(
-                      "mt-0.5 size-4 shrink-0 transition-colors",
-                      isActive ? "text-brand" : "text-muted-foreground",
-                    )}
-                    strokeWidth={1.75}
-                  />
-                  {row.description}
-                </p>
+                  <p className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground lg:col-span-8">
+                    <Icon
+                      className={cn(
+                        "mt-0.5 size-4 shrink-0 transition-colors",
+                        isActive ? "text-brand" : "text-muted-foreground",
+                      )}
+                      strokeWidth={1.75}
+                    />
+                    {row.description}
+                  </p>
+                </div>
               </motion.li>
             );
           })}
-        </ul>
-      </div>
+      </ul>
     </section>
   );
 }

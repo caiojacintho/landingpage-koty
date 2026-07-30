@@ -10,10 +10,11 @@ import { KotyLogo } from "@/components/koty-logo";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { label: "Gestão", href: "/#gestao" },
+  { label: "Home", href: "/" },
+  { label: "Plataforma", href: "/plataforma" },
   { label: "Guia da casa", href: "/guia-da-casa" },
-  { label: "Checklists", href: "/#checklists" },
-  { label: "Planos", href: "/planos" },
+  { label: "Preço", href: "/planos" },
+  { label: "Quem somos", href: "/quem-somos" },
 ];
 
 export function SiteHeader({ solid = false }: { solid?: boolean }) {

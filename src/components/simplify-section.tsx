@@ -19,8 +19,9 @@ type Card = {
 
 const CARDS: Card[] = [
   {
-    title: "Plataforma completa e intuitiva",
-    description: "Controle total da sua operação de aluguel em um só lugar.",
+    title: "Tudo na palma da mão",
+    description:
+      "Controle total da sua operação de aluguel direto do celular, onde você estiver.",
     image: "/cards/app.png",
   },
   {

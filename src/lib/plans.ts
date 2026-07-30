@@ -1,11 +1,31 @@
 export const ANNUAL_DISCOUNT = 0.2;
 
+export const MAX_UNITS = 20;
+
+/** Desconto progressivo por volume de imóveis. Ajuste os valores conforme a política comercial. */
+export const VOLUME_TIERS: { min: number; discount: number }[] = [
+  { min: 1, discount: 0 },
+  { min: 2, discount: 0.1 },
+  { min: 5, discount: 0.2 },
+  { min: 10, discount: 0.3 },
+  { min: 20, discount: 0.4 },
+];
+
+export function volumeDiscount(units: number) {
+  let discount = 0;
+  for (const tier of VOLUME_TIERS) {
+    if (units >= tier.min) discount = tier.discount;
+  }
+  return discount;
+}
+
 export type PlanId = "essencial" | "profissional";
 
 export const PLANS: {
   id: PlanId;
   name: string;
   popular?: boolean;
+  comingSoon?: boolean;
   headline: string;
   description: string;
   monthly: number;
@@ -34,6 +54,7 @@ export const PLANS: {
     id: "profissional",
     name: "Profissional",
     popular: true,
+    comingSoon: true,
     headline: "Coloque toda a gestão no automático",
     description:
       "Pra super anfitriões que querem: atendimento, reservas e equipe rodando sozinhos — com mensagens automáticas no WhatsApp.",
@@ -44,6 +65,50 @@ export const PLANS: {
       "Mensagens automáticas no WhatsApp para hóspedes e equipe",
       "Guia da Casa completo: IA que responde os hóspedes, múltiplos idiomas, vídeos e formulário de check-in",
       "Sincronização com o Google Calendar",
+      "Suporte prioritário via WhatsApp",
+    ],
+  },
+];
+
+export const GUIA_PLANS: {
+  id: string;
+  name: string;
+  popular?: boolean;
+  headline: string;
+  description: string;
+  monthly: number;
+  features: string[];
+}[] = [
+  {
+    id: "guia-basico",
+    name: "Básico",
+    headline: "Um guia digital profissional para o seu imóvel",
+    description:
+      "Regras da casa, Wi-Fi, instruções e dicas locais num guia digital que o hóspede acessa por QR code.",
+    monthly: 19.9,
+    features: [
+      "Guia digital acessado por QR code",
+      "Regras da casa, Wi-Fi e instruções dos equipamentos",
+      "Dicas locais de restaurantes e passeios",
+      "Personalização com fotos do seu imóvel",
+      "Atualização a qualquer momento",
+      "Suporte por e-mail",
+    ],
+  },
+  {
+    id: "guia-completo",
+    name: "Completo",
+    popular: true,
+    headline: "O guia que responde pelo anfitrião",
+    description:
+      "Pra quem quer o hóspede bem atendido sem precisar responder mensagem: IA, idiomas e check-in online.",
+    monthly: 39.9,
+    features: [
+      "Tudo do plano Básico, e mais:",
+      "IA que responde as perguntas dos hóspedes 24h por dia",
+      "Tradução automática para múltiplos idiomas",
+      "Vídeos com instruções da casa",
+      "Formulário de check-in online",
       "Suporte prioritário via WhatsApp",
     ],
   },

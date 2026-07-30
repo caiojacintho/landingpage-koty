@@ -5,9 +5,8 @@ import NumberFlow from "@number-flow/react";
 import { Check } from "lucide-react";
 import { motion } from "motion/react";
 
-import { Button } from "@/components/ui/button";
 import { PLANS } from "@/lib/plans";
-import { cn } from "@/lib/utils";
+import { cn, RANGE_CLASS, rangeProgressStyle } from "@/lib/utils";
 
 const PERIODS = [
   { label: "6 meses", months: 6 },
@@ -63,8 +62,8 @@ export function RevenueSimulator() {
             Descubra quanto seu imóvel pode render
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
-            Ajuste a diária média e o período para ver a projeção de receita com
-            a Koty cuidando da operação.
+            Ajuste a diária média e o período para ver a projeção de receita
+            com a Koty te ajudando a cuidar da operação.
           </p>
 
           <ul className="mt-8 space-y-3">
@@ -108,7 +107,8 @@ export function RevenueSimulator() {
                 step={10}
                 value={rate}
                 onChange={(e) => setRate(Number(e.target.value))}
-                className="mt-3 w-full accent-[var(--brand)]"
+                className={RANGE_CLASS}
+                style={rangeProgressStyle(rate, 80, 1500)}
               />
               <div className="mt-1 flex justify-between text-[11px] text-muted-foreground">
                 <span>R$ 80</span>
@@ -137,7 +137,8 @@ export function RevenueSimulator() {
                 step={1}
                 value={occupancy}
                 onChange={(e) => setOccupancy(Number(e.target.value))}
-                className="mt-3 w-full accent-[var(--brand)]"
+                className={RANGE_CLASS}
+                style={rangeProgressStyle(occupancy, 0, 100)}
               />
               <div className="mt-1 flex justify-between text-[11px] text-muted-foreground">
                 <span>0%</span>
@@ -214,15 +215,19 @@ export function RevenueSimulator() {
                     locales="pt-BR"
                     className="mt-1 block font-bold text-brand"
                   />
+                  {gross > 0 && (
+                    <span className="mt-2 inline-flex items-center rounded-full bg-brand/10 px-2.5 py-1 text-[11px] font-semibold text-brand">
+                      {((cost / gross) * 100).toLocaleString("pt-BR", {
+                        maximumFractionDigits: 1,
+                      })}
+                      % da receita bruta
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
 
-            <Button size="lg" className="mt-6 w-full">
-              Simular meu imóvel
-            </Button>
-
-            <p className="mt-4 text-center text-[11px] leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-center text-[11px] leading-relaxed text-muted-foreground">
               *A simulação é uma estimativa e não garante resultados futuros.
               Desconta apenas a mensalidade da Koty — não inclui impostos,
               limpeza nem taxas das plataformas.
