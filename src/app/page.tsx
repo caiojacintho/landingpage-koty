@@ -1,3 +1,4 @@
+import { BlogSection } from "@/components/blog-section";
 import { BureaucracySection } from "@/components/bureaucracy-section";
 import { Hero } from "@/components/hero";
 import { RevenueSimulator } from "@/components/revenue-simulator";
@@ -16,6 +17,7 @@ export default function Home() {
         <SolutionsSection />
         <RevenueSimulator />
         <BureaucracySection />
+        <BlogSection />
       </main>
       <SiteFooter />
     </>
