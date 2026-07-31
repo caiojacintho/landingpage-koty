@@ -68,7 +68,7 @@ export function BureaucracySection() {
         >
           <div className="lg:col-span-8">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
-              Cadastre seu imóvel
+              Recursos da plataforma
             </p>
             <h2 className="mt-5 text-4xl font-extrabold leading-[1.08] sm:text-5xl">
               Menos burocracia.
@@ -116,7 +116,7 @@ export function BureaucracySection() {
                   <p className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground lg:col-span-8">
                     <Icon
                       className={cn(
-                        "mt-0.5 size-4 shrink-0 transition-colors",
+                        "mt-0.5 size-4 shrink-0 transition-colors max-lg:hidden",
                         isActive ? "text-brand" : "text-muted-foreground",
                       )}
                       strokeWidth={1.75}

@@ -205,6 +205,14 @@ export function RevenueSimulator() {
                   <p className="text-xs text-muted-foreground">
                     Assinatura Koty {periodLabel}
                   </p>
+                  {gross > 0 && (
+                    <span className="mt-1 inline-flex items-center rounded-full bg-brand/10 px-2.5 py-1 text-[11px] font-semibold text-brand">
+                      {((cost / gross) * 100).toLocaleString("pt-BR", {
+                        maximumFractionDigits: 1,
+                      })}
+                      % da receita bruta
+                    </span>
+                  )}
                   <NumberFlow
                     value={cost}
                     format={{
@@ -215,14 +223,6 @@ export function RevenueSimulator() {
                     locales="pt-BR"
                     className="mt-1 block font-bold text-brand"
                   />
-                  {gross > 0 && (
-                    <span className="mt-2 inline-flex items-center rounded-full bg-brand/10 px-2.5 py-1 text-[11px] font-semibold text-brand">
-                      {((cost / gross) * 100).toLocaleString("pt-BR", {
-                        maximumFractionDigits: 1,
-                      })}
-                      % da receita bruta
-                    </span>
-                  )}
                 </div>
               </div>
             </div>

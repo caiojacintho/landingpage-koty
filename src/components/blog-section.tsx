@@ -1,54 +1,18 @@
 "use client";
 
 import { useRef } from "react";
-import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
 
-type Post = {
-  title: string;
-  date: string;
-  excerpt: string;
-  href: string;
-};
+import { POSTS as ALL_POSTS } from "@/lib/blog-posts";
 
-const POSTS: Post[] = [
-  {
-    title: "Como automatizar o check-in e as mensagens do seu Airbnb",
-    date: "12 JUL 2026",
-    excerpt:
-      "Um passo a passo para parar de enviar a mesma mensagem a cada reserva e receber hóspedes no automático.",
-    href: "/blog",
-  },
-  {
-    title: "Checklist de limpeza: o padrão dos super anfitriões",
-    date: "05 JUL 2026",
-    excerpt:
-      "O roteiro cômodo por cômodo que as melhores operações seguem entre uma estadia e outra.",
-    href: "/blog",
-  },
-  {
-    title: "Como precificar suas diárias na alta temporada",
-    date: "28 JUN 2026",
-    excerpt:
-      "Estratégias de preço para aumentar a receita sem derrubar a ocupação do seu imóvel.",
-    href: "/blog",
-  },
-  {
-    title: "Guia da Casa: menos perguntas, mais avaliações 5 estrelas",
-    date: "20 JUN 2026",
-    excerpt:
-      "Como um guia digital reduz as dúvidas dos hóspedes e melhora a nota do seu anúncio.",
-    href: "/blog",
-  },
-  {
-    title: "Mensagens de WhatsApp que economizam horas toda semana",
-    date: "14 JUN 2026",
-    excerpt:
-      "Os modelos de mensagem que os anfitriões mais usam para ganhar tempo na operação.",
-    href: "/blog",
-  },
-];
+const POSTS = ALL_POSTS.map((post) => ({
+  title: post.title,
+  date: post.date,
+  excerpt: post.excerpt,
+  href: `/blog/${post.slug}`,
+}));
 
 const reveal = {
   initial: { opacity: 0, y: 24 },
@@ -130,12 +94,7 @@ export function BlogSection() {
             className="w-[80vw] max-w-sm shrink-0 snap-start rounded-2xl border border-border bg-card transition-colors hover:border-foreground/20 sm:w-96"
           >
             <a href={post.href} className="group block p-6 sm:p-7">
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                <FileText className="size-4" strokeWidth={1.75} />
-                Artigo
-              </span>
-
-              <h3 className="mt-5 text-xl font-bold leading-snug tracking-tight group-hover:text-brand sm:text-2xl">
+              <h3 className="text-xl font-bold leading-snug tracking-tight group-hover:text-brand sm:text-2xl">
                 {post.title}
               </h3>
 
